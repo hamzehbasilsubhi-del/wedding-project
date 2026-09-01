@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Emily & Saliba - Wedding Invitation</title>
   
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -41,6 +40,14 @@
       align-items: flex-start;
       overflow-x: hidden;
       overflow-y: auto;
+    }
+
+    /* Hardware Acceleration to prevent flickering */
+    video, .envelope-wrapper, #envelope-overlay {
+      will-change: opacity, transform;
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
     }
 
     /* Envelope Interactive Overlay */
@@ -85,37 +92,24 @@
     }
 
     /* Clickable Wax Seal Indicator */
-   .wax-seal-click-area {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  z-index: 10;
-  cursor: pointer;
-  /* إلغاء الدائرة البيضاء وتأثير النقر والتركيز تماماً */
-  outline: none !important;
-  border: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-    @keyframes pulse-glow {
-      0% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
-      }
-      70% {
-        box-shadow: 0 0 0 22px rgba(255, 255, 255, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-      }
+    .wax-seal-click-area {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      z-index: 10;
+      cursor: pointer;
+      outline: none !important;
+      border: none !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      -webkit-tap-highlight-color: transparent !important;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .click-hint {
@@ -643,7 +637,6 @@
 </head>
 <body class="no-scroll">
 
-  <!-- Interactive Envelope Overlay -->
   <div id="envelope-overlay">
     <div class="envelope-wrapper">
       <img src="images/envelope-cover.jpg" alt="Wax Seal Envelope" class="envelope-image" id="envelope-img">
@@ -655,10 +648,8 @@
     </div>
   </div>
 
-  <!-- Main Mobile Container -->
   <div class="mobile-container">
 
-    <!-- Hero Section -->
     <section class="hero-section">
       <div class="top-info">
         <div class="top-info-block">
@@ -680,7 +671,6 @@
       </div>
     </section>
 
-    <!-- Intro Message Section -->
     <section class="intro-section">
       <h2 class="script-font">Dear friends and family!</h2>
       <p class="intro-text">
@@ -692,12 +682,10 @@
       <img src="images/dove.png" alt="White Dove" class="dove-img">
     </section>
 
-    <!-- Event Timeline Section -->
     <h2 class="timeline-title script-font">Order of the Day</h2>
     
     <div class="vertical-timeline">
 
-      <!-- 1. Ceremony -->
       <div class="timeline-row">
         <div class="timeline-col left">
           <span class="timeline-time">12:00 PM</span>
@@ -714,7 +702,6 @@
         </div>
       </div>
 
-      <!-- 2. Photos -->
       <div class="timeline-row">
         <div class="timeline-col left" style="display: flex; justify-content: flex-end;">
           <div class="timeline-icon-box">
@@ -730,7 +717,6 @@
         </div>
       </div>
 
-      <!-- 3. Cocktail Hour -->
       <div class="timeline-row">
         <div class="timeline-col left">
           <span class="timeline-time">2:00 PM</span>
@@ -746,7 +732,6 @@
         </div>
       </div>
 
-      <!-- 4. First Dance -->
       <div class="timeline-row">
         <div class="timeline-col left" style="display: flex; justify-content: flex-end;">
           <div class="timeline-icon-box">
@@ -763,7 +748,6 @@
         </div>
       </div>
 
-      <!-- 5. Dinner & Toasts -->
       <div class="timeline-row">
         <div class="timeline-col left">
           <span class="timeline-time">3:30 PM</span>
@@ -778,7 +762,6 @@
         </div>
       </div>
 
-      <!-- 6. Party -->
       <div class="timeline-row">
         <div class="timeline-col left" style="display: flex; justify-content: flex-end;">
           <div class="timeline-icon-box">
@@ -793,7 +776,6 @@
         </div>
       </div>
 
-      <!-- 7. Closing -->
       <div class="timeline-row">
         <div class="timeline-col left">
           <span class="timeline-time">9:00 PM</span>
@@ -813,17 +795,14 @@
 
     </div>
 
-    <!-- Middle Image Banner -->
     <div class="rounded-image">
       <img src="images/couple-umbrella.jpg" alt="Couple under umbrella">
     </div>
 
-    <!-- Dress Code Section -->
     <section class="dresscode-section">
       <h2 class="script-font">Dress code</h2>
       <p class="dresscode-desc">We would be very happy if your outfit is in the colours of the wedding theme.</p>
 
-      <!-- Color Palette Swatches -->
       <div class="color-palette">
         <div class="color-swatch" style="background-color: #f3ece4;"></div>
         <div class="color-swatch" style="background-color: #d8d8d8;"></div>
@@ -832,7 +811,6 @@
         <div class="color-swatch" style="background-color: #2b2b2a;"></div>
       </div>
 
-      <!-- Outfits Section -->
       <div class="outfits-container">
         
         <div class="men-text-block">
@@ -872,7 +850,6 @@
       </p>
     </section>
 
-    <!-- RSVP Section -->
     <div class="card-box">
       <h2 class="script-font" style="text-align: center; font-size: 2.2rem; margin-bottom: 20px;">Please confirm your attendance</h2>
       
@@ -895,7 +872,6 @@
       </form>
     </div>
 
-    <!-- Organizational Aspects Section -->
     <section class="org-section">
       <h2 class="script-font">Organizational aspects</h2>
       <p class="intro-text">
@@ -907,12 +883,10 @@
       </p>
     </section>
 
-    <!-- Couple Running Image -->
     <div class="rounded-image">
       <img src="images/couple-running.jpg" alt="Couple running">
     </div>
 
-    <!-- Location Section -->
     <section style="text-align: center; padding-top: 20px;">
       <h2 class="script-font" style="font-size: 2.3rem;">The location</h2>
       <p style="font-size: 1.1rem; color: #555; margin-bottom: 15px;">Creek Ballroom, Park Hyatt Dubai</p>
@@ -926,7 +900,6 @@
       </div>
     </section>
 
-    <!-- Footer Section -->
     <footer class="footer-section">
       <div class="script-font">Hope to see you there</div>
       <div class="names">Emily and Saliba</div>
@@ -935,7 +908,6 @@
 
   </div>
 
-  <!-- Interactive Scripts -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const overlay = document.getElementById('envelope-overlay');
