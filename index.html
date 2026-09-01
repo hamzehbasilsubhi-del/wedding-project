@@ -77,7 +77,7 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      background-color: #fcfbf9; /* نفس لون خلفية المغلف لمنع أي بياض */
+      background-color: #fcfbf9;
     }
 
     /* Stack elements: Video below Image */
@@ -99,7 +99,7 @@
       top: 0;
       left: 0;
       z-index: 2;
-      transition: opacity 0.2s ease-out; /* انتقال ناعم جداً عند إخفاء الصورة */
+      transition: opacity 0.2s ease-out;
     }
 
     /* Clickable Wax Seal Indicator */
@@ -923,10 +923,10 @@
       <p style="font-size: 1.1rem; color: #555; margin-bottom: 15px;">Creek Ballroom, Park Hyatt Dubai</p>
       
       <div class="map-container">
+        <!-- تم إزالة loading="lazy" لتبدأ الخريطة بالتحميل فوراً بدون تأخير -->
         <iframe 
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2560.213233800262!2d14.4013401!3d50.0869687!2m2!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b94e3347f8a79%3A0xb214f48866e41b99!2sVrtba%20Garden!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" 
-          allowfullscreen="" 
-          loading="lazy">
+          allowfullscreen="">
         </iframe>
       </div>
     </section>
@@ -971,7 +971,7 @@
       video.addEventListener('timeupdate', () => {
         if (!videoStarted && video.currentTime > 0) {
           videoStarted = true;
-          img.style.opacity = '0'; // Fade out image smoothly revealing video below
+          img.style.opacity = '0';
           setTimeout(() => {
             img.style.display = 'none';
           }, 200);
@@ -982,11 +982,9 @@
         if (e) e.stopPropagation();
         if (videoStarted) return;
 
-        // Hide interactive cues instantly
         sealBtn.style.display = 'none';
         clickText.style.display = 'none';
 
-        // Play video underneath image
         const playPromise = video.play();
         if (playPromise !== undefined) {
           playPromise.catch(error => {
