@@ -25,9 +25,95 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    /* Mobile Container */
+    /* Envelope Interactive Overlay */
+    #envelope-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #fcfbf9;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+      cursor: pointer;
+    }
+
+    .envelope-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      height: 100%;
+      max-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .envelope-image, .envelope-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .envelope-video {
+      display: none;
+    }
+
+    /* Clickable Wax Seal Hotspot Indicator */
+    .wax-seal-click-area {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      z-index: 10;
+      cursor: pointer;
+      animation: pulse-glow 2s infinite;
+    }
+
+    @keyframes pulse-glow {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+      }
+    }
+
+    .click-hint {
+      position: absolute;
+      bottom: 40px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: #777;
+      text-transform: uppercase;
+      z-index: 10;
+      pointer-events: none;
+      animation: fadeInOut 2s infinite;
+    }
+
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    /* Mobile Main Container */
     .mobile-container {
       width: 100%;
       max-width: 480px;
@@ -336,7 +422,6 @@
       margin-left: 40px;
     }
 
-    /* Women Text Block & Arrow Positioned Above Text */
     .women-text-block {
       text-align: right;
       padding-right: 20px;
@@ -533,6 +618,17 @@
   </style>
 </head>
 <body>
+
+  <div id="envelope-overlay">
+    <div class="envelope-wrapper">
+      <img src="images/envelope-cover.jpg" alt="Wax Seal Envelope" class="envelope-image" id="envelope-img">
+      <video id="envelope-video" class="envelope-video" playsinline muted>
+        <source src="videos/envelope-opening.mp4" type="video/mp4">
+      </video>
+      <div class="wax-seal-click-area" id="seal-btn"></div>
+      <div class="click-hint" id="click-text">Tap the wax seal to open</div>
+    </div>
+  </div>
 
   <div class="mobile-container">
 
@@ -796,8 +892,38 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const rows = document.querySelectorAll('.timeline-row');
+      const overlay = document.getElementById('envelope-overlay');
+      const img = document.getElementById('envelope-img');
+      const video = document.getElementById('envelope-video');
+      const sealBtn = document.getElementById('seal-btn');
+      const clickText = document.getElementById('click-text');
 
+      // Function to trigger opening animation
+      const openEnvelope = () => {
+        img.style.display = 'none';
+        sealBtn.style.display = 'none';
+        clickText.style.display = 'none';
+        video.style.display = 'block';
+
+        video.play().catch(error => {
+          console.log("Autoplay issue, opening directly:", error);
+          finishOpening();
+        });
+      };
+
+      const finishOpening = () => {
+        overlay.style.opacity = '0';
+        overlay.style.visibility = 'hidden';
+      };
+
+      // Click on seal or overlay to open
+      overlay.addEventListener('click', openEnvelope);
+
+      // When video ends, hide overlay smoothly
+      video.addEventListener('ended', finishOpening);
+
+      // Scroll Animation Script for Timeline
+      const rows = document.querySelectorAll('.timeline-row');
       const observerOptions = {
         root: null,
         rootMargin: '0px 0px -50px 0px',
