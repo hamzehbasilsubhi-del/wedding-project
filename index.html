@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maria & Adrien - Wedding Invitation</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset & Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #fcfbf9;
+      color: #4a4a4a;
+      font-family: 'Cormorant Garamond', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Mobile First Container - Mimicking Tilda / Mobile view */
+    .mobile-container {
+      width: 100%;
+      max-width: 480px;
+      background-color: #ffffff;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Typography Utilities */
+    .script-font {
+      font-family: 'Alex Brush', cursive;
+      font-weight: normal;
+      color: #333333;
+    }
+
+    .sans-font {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Section 1: Hero Header */
+    .hero-section {
+      position: relative;
+      text-align: center;
+      padding-top: 40px;
+    }
+
+    .top-info {
+      display: flex;
+      justify-content: space-between;
+      width: 75%;
+      margin: 0 auto 15px auto;
+      border-bottom: 1px solid #dcdcdc;
+      padding-bottom: 8px;
+    }
+
+    .top-info-block {
+      text-align: center;
+    }
+
+    .top-info-block .value {
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    .top-info-block .label {
+      font-size: 0.75rem;
+      color: #888;
+      text-transform: lowercase;
+    }
+
+    .couple-names {
+      font-size: 2.8rem;
+      margin: 20px 0 10px 0;
+    }
+
+    .invitation-title {
+      font-size: 1.8rem;
+      font-weight: 400;
+      line-height: 1.3;
+      color: #2b2b2b;
+      margin-bottom: 15px;
+    }
+
+    .invitation-subtitle {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 80%;
+      margin: 0 auto 30px auto;
+      line-height: 1.4;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
+    }
+
+    .hero-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-image-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(to bottom, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+      z-index: 1;
+    }
+
+    /* Section 2: Intro Message */
+    .intro-section {
+      padding: 50px 30px 30px 30px;
+      text-align: center;
+      position: relative;
+    }
+
+    .intro-section .script-font {
+      font-size: 2.3rem;
+      margin-bottom: 25px;
+    }
+
+    .intro-text {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .dove-img {
+      position: absolute;
+      right: 10px;
+      bottom: -20px;
+      width: 120px;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    /* Common Card Outlines */
+    .card-box {
+      border: 1px solid #dcdcdc;
+      border-radius: 20px;
+      margin: 20px;
+      padding: 30px 20px;
+      position: relative;
+    }
+
+    .card-badge {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffffff;
+      border: 1px solid #dcdcdc;
+      padding: 4px 20px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+    }
+
+    /* Section 3: Event Timeline */
+    .timeline-title {
+      text-align: center;
+      font-size: 2.3rem;
+      margin: 40px 0 20px 0;
+    }
+
+    .timeline-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .timeline-item {
+      text-align: left;
+    }
+
+    .timeline-item .time-event {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #111;
+    }
+
+    .timeline-item .location {
+      font-size: 0.95rem;
+      color: #666;
+      margin-top: 4px;
+      line-height: 1.3;
+      padding-left: 55px;
+    }
+
+    /* Image Divider Sections */
+    .full-width-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 30px 0;
+    }
+
+    .rounded-image {
+      width: calc(100% - 40px);
+      margin: 20px auto;
+      border-radius: 20px;
+      overflow: hidden;
+      display: block;
+    }
+
+    .rounded-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Section 4: Dress Code */
+    .dresscode-section {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .dresscode-section .script-font {
+      font-size: 2.3rem;
+      margin-bottom: 15px;
+    }
+
+    .dresscode-desc {
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      color: #555;
+    }
+
+    .color-palette {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .color-swatch {
+      width: 45px;
+      height: 45px;
+      border-radius: 8px;
+    }
+
+    /* Polaroid Gallery & Outfits */
+    .outfit-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      padding: 0 10px;
+    }
+
+    .polaroid-card {
+      background: #ffffff;
+      padding: 12px 12px 25px 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .polaroid-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .outfit-info {
+      text-align: left;
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.4;
+      margin: 15px 0;
+    }
+
+    .outfit-info strong {
+      display: block;
+      font-size: 1.1rem;
+      color: #222;
+      margin-bottom: 5px;
+    }
+
+    /* Curved Arrow SVGs */
+    .arrow-svg {
+      width: 50px;
+      height: 30px;
+      margin-top: 5px;
+    }
+
+    /* Section 5: RSVP Form */
+    .rsvp-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .form-label {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      color: #222;
+    }
+
+    .form-input-text {
+      border: none;
+      border-bottom: 1px solid #333;
+      padding: 8px 0;
+      font-size: 1rem;
+      outline: none;
+      background: transparent;
+      font-family: inherit;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 5px;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #b5a397;
+    }
+
+    .submit-btn {
+      background-color: #b5a397;
+      color: #ffffff;
+      border: none;
+      padding: 12px 35px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 20px auto 0 auto;
+      cursor: pointer;
+      display: block;
+      transition: background 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #9d8b7f;
+    }
+
+    /* Section 6: Organizational Aspects */
+    .org-section {
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .org-section .script-font {
+      font-size: 2.3rem;
+      margin-bottom: 20px;
+    }
+
+    .phone-number {
+      font-size: 1.8rem;
+      margin: 20px 0;
+      letter-spacing: 1px;
+    }
+
+    /* Map Placeholder */
+    .map-container {
+      width: 100%;
+      height: 250px;
+      background-color: #e5e5e5;
+      margin: 20px 0;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Footer */
+    .footer-section {
+      text-align: center;
+      padding: 40px 20px 60px 20px;
+    }
+
+    .footer-section .script-font {
+      font-size: 2.2rem;
+    }
+
+    .footer-section .names {
+      font-size: 1.8rem;
+      margin: 10px 0;
+    }
+
+    .heart-icon {
+      font-size: 1.2rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mobile-container">
+
+    <section class="hero-section">
+      <div class="top-info">
+        <div class="top-info-block">
+          <div class="value">24.03.24</div>
+          <div class="label">date</div>
+        </div>
+        <div class="top-info-block">
+          <div class="value">Prague</div>
+          <div class="label">place</div>
+        </div>
+      </div>
+
+      <h1 class="couple-names script-font">Maria & Adrien</h1>
+      <h2 class="invitation-title">We are inviting you<br>to our wedding!</h2>
+      <p class="invitation-subtitle">Let's celebrate the best day<br>of our life together!</p>
+
+      <div class="hero-image-wrapper">
+        <img src="images/hero.jpg" alt="Maria and Adrien">
+      </div>
+    </section>
+
+    <section class="intro-section">
+      <h2 class="script-font">Dear friends and family!</h2>
+      <p class="intro-text">
+        This spring a very special and happy event is going to happen - our wedding.
+      </p>
+      <p class="intro-text">
+        It is impossible to imagine this day without our closest people. Thus, we are happy to invite you to join and share this wonderful occasion with us.
+      </p>
+      <img src="images/dove.png" alt="White Dove" class="dove-img">
+    </section>
+
+    <h2 class="timeline-title script-font">Event timeline</h2>
+    <div class="card-box">
+      <div class="card-badge">24 March</div>
+      <div class="timeline-list">
+        
+        <div class="timeline-item">
+          <div class="time-event">12:00 - Wedding ceremony</div>
+          <div class="location">Vrtba Garden, Karmelitska 25, 118 00 Praha 1 – Lesser Town</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time-event">13:30 - Transfer</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time-event">14:00 - Cocktail hour</div>
+          <div class="location">Petřínské sady 411/14, 118 00 Praha 1</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time-event">15:00 - First dance</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time-event">15:30 - Dinner</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time-event">17:00 - Party</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time-event">21:00 - Closing</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="rounded-image">
+      <img src="images/couple-umbrella.jpg" alt="Couple under umbrella">
+    </div>
+
+    <section class="dresscode-section">
+      <h2 class="script-font">Dress code</h2>
+      <p class="dresscode-desc">We would be very happy if your outfit is in the colours of the wedding theme.</p>
+
+      <div class="color-palette">
+        <div class="color-swatch" style="background-color: #f3ece4;"></div>
+        <div class="color-swatch" style="background-color: #d8d8d8;"></div>
+        <div class="color-swatch" style="background-color: #d1c2b5;"></div>
+        <div class="color-swatch" style="background-color: #727475;"></div>
+        <div class="color-swatch" style="background-color: #2b2b2a;"></div>
+      </div>
+
+      <div class="outfit-grid">
+        
+        <div class="outfit-info">
+          <strong>Men:</strong>
+          Suits, jackets, shirts, grey, champagne, black colours.
+          <svg class="arrow-svg" viewBox="0 0 50 30" fill="none" stroke="#333" stroke-width="1">
+            <path d="M 5,5 Q 25,25 45,15 M 40,20 L 45,15 L 42,10" />
+          </svg>
+        </div>
+
+        <div class="polaroid-card" style="transform: rotate(3deg);">
+          <img src="images/men-outfit.jpg" alt="Men Outfit">
+        </div>
+
+        <div class="polaroid-card" style="transform: rotate(-2deg);">
+          <img src="images/women-outfit-1.jpg" alt="Bridesmaids Outfit">
+        </div>
+
+        <div class="polaroid-card" style="transform: rotate(2deg);">
+          <img src="images/women-outfit-2.jpg" alt="Women Outfit">
+        </div>
+
+        <div class="outfit-info" style="text-align: right;">
+          <strong>Women:</strong>
+          Cocktail dresses or suits, champagne, grey colours.
+          <svg class="arrow-svg" viewBox="0 0 50 30" fill="none" stroke="#333" stroke-width="1" style="transform: scaleX(-1);">
+            <path d="M 5,5 Q 25,25 45,15 M 40,20 L 45,15 L 42,10" />
+          </svg>
+        </div>
+
+      </div>
+
+      <p class="dresscode-desc" style="margin-top: 40px;">
+        Also we recommend to wear comfortable shoes because the wedding will be outdoors.
+      </p>
+    </section>
+
+    <div class="card-box">
+      <h2 class="script-font" style="text-align: center; font-size: 2.2rem; margin-bottom: 20px;">Please confirm your attendance</h2>
+      
+      <form class="rsvp-form" onsubmit="event.preventDefault();">
+        <div class="form-group">
+          <label class="form-label">Your name</label>
+          <input type="text" class="form-input-text" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Will you come</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label"><input type="checkbox"> Yes, I will</label>
+            <label class="checkbox-label"><input type="checkbox"> Unfortunately, I can not :(</label>
+            <label class="checkbox-label"><input type="checkbox"> I will tell you a bit later</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">What would you like to drink?</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label"><input type="checkbox"> Champagne</label>
+            <label class="checkbox-label"><input type="checkbox"> White wine</label>
+            <label class="checkbox-label"><input type="checkbox"> Red wine</label>
+            <label class="checkbox-label"><input type="checkbox"> Vodka</label>
+            <label class="checkbox-label"><input type="checkbox"> Whiskey</label>
+            <label class="checkbox-label"><input type="checkbox"> Martini</label>
+            <label class="checkbox-label"><input type="checkbox"> I do not drink alcohol</label>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">SUBMIT</button>
+      </form>
+    </div>
+
+    <section class="org-section">
+      <h2 class="script-font">Organizational aspects</h2>
+      <p class="intro-text">
+        If you have any questions, you can always contact the organizer of our wedding - Maria
+      </p>
+      <div class="phone-number script-font">+31 6845965887</div>
+      <p class="intro-text">
+        Also, we would be very happy to see creative approaches to congratulations. For example, if you remember a funny story related to us to share with guests and laugh all together.
+      </p>
+    </section>
+
+    <div class="rounded-image">
+      <img src="images/couple-running.jpg" alt="Couple running">
+    </div>
+
+    <section style="text-align: center; padding-top: 20px;">
+      <h2 class="script-font" style="font-size: 2.3rem;">The location</h2>
+      
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2560.213233800262!2d14.4013401!3d50.0869687!2m2!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b94e3347f8a79%3A0xb214f48866e41b99!2sVrtba%20Garden!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+    </section>
+
+    <footer class="footer-section">
+      <div class="script-font">Hope to see you there</div>
+      <div class="names">Maria and Adrien</div>
+      <div class="heart-icon">♡</div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
