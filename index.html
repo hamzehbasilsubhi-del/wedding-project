@@ -85,18 +85,26 @@
     }
 
     /* Clickable Wax Seal Indicator */
-    .wax-seal-click-area {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      z-index: 10;
-      cursor: pointer;
-      animation: pulse-glow 2s infinite;
-    }
+   .wax-seal-click-area {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  z-index: 10;
+  cursor: pointer;
+  /* إلغاء الدائرة البيضاء وتأثير النقر والتركيز تماماً */
+  outline: none !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
 
     @keyframes pulse-glow {
       0% {
