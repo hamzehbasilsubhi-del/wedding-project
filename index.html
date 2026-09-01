@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maria & Adrien - Wedding Invitation</title>
+  <title>Emily & Saliba - Wedding Invitation</title>
   
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
@@ -28,7 +27,7 @@
       min-height: 100vh;
     }
 
-    /* Mobile First Container */
+    /* Mobile Container */
     .mobile-container {
       width: 100%;
       max-width: 480px;
@@ -70,7 +69,7 @@
     }
 
     .top-info-block .value {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       letter-spacing: 1px;
     }
 
@@ -153,56 +152,97 @@
       pointer-events: none;
     }
 
-    /* Common Card Outlines */
-    .card-box {
-      border: 1px solid #dcdcdc;
-      border-radius: 20px;
-      margin: 20px;
-      padding: 30px 20px;
-      position: relative;
-    }
-
-    .card-badge {
-      position: absolute;
-      top: -16px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #ffffff;
-      border: 1px solid #dcdcdc;
-      padding: 4px 20px;
-      border-radius: 12px;
-      font-size: 0.95rem;
-    }
-
-    /* Section 3: Event Timeline */
+    /* Section 3: Vertical Timeline (New Style Matching Reference) */
     .timeline-title {
       text-align: center;
       font-size: 2.3rem;
-      margin: 40px 0 20px 0;
+      margin: 40px 0 30px 0;
     }
 
-    .timeline-list {
+    .vertical-timeline {
+      position: relative;
+      max-width: 380px;
+      margin: 0 auto 40px auto;
+      padding: 10px 0;
+    }
+
+    /* Center Vertical Line */
+    .vertical-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background-color: #8c8c8c;
+      transform: translateX(-50%);
+    }
+
+    .timeline-row {
       display: flex;
-      flex-direction: column;
-      gap: 20px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 35px;
+      position: relative;
     }
 
-    .timeline-item {
+    .timeline-row:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Left & Right Columns */
+    .timeline-col {
+      width: 42%;
+      position: relative;
+    }
+
+    .timeline-col.left {
+      text-align: right;
+      padding-right: 15px;
+    }
+
+    .timeline-col.right {
       text-align: left;
+      padding-left: 15px;
     }
 
-    .timeline-item .time-event {
+    /* Horizontal Tick Line on the Center Line */
+    .timeline-row::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 12px;
+      height: 1px;
+      background-color: #8c8c8c;
+      transform: translate(-50%, -50%);
+    }
+
+    .timeline-time {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      color: #222222;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .timeline-event-title {
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.15rem;
-      font-weight: 600;
-      color: #111;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #333333;
     }
 
-    .timeline-item .location {
-      font-size: 0.95rem;
-      color: #666;
-      margin-top: 4px;
-      line-height: 1.3;
-      padding-left: 55px;
+    .timeline-icon {
+      width: 38px;
+      height: 38px;
+      stroke: #333333;
+      stroke-width: 1.2;
+      fill: none;
+      display: inline-block;
     }
 
     /* Image Divider Sections */
@@ -250,7 +290,7 @@
       border-radius: 8px;
     }
 
-    /* Custom Layout for Outfits Section - Matching Design precisely */
+    /* Outfits Section */
     .outfits-container {
       position: relative;
       padding: 10px 0;
@@ -310,7 +350,6 @@
       margin-right: 40px;
     }
 
-    /* Custom Polaroid Styling */
     .polaroid-card {
       background: #ffffff;
       padding: 8px 8px 18px 8px;
@@ -326,7 +365,6 @@
       display: block;
     }
 
-    /* Overlapping & Sizing according to reference image */
     .card-men {
       width: 58%;
       margin-left: auto;
@@ -348,6 +386,15 @@
       margin-left: 20px;
       transform: rotate(-6deg);
       z-index: 3;
+    }
+
+    /* Common Card Outlines */
+    .card-box {
+      border: 1px solid #dcdcdc;
+      border-radius: 20px;
+      margin: 20px;
+      padding: 30px 20px;
+      position: relative;
     }
 
     /* Section 5: RSVP Form */
@@ -475,33 +522,31 @@
 
   <div class="mobile-container">
 
-    <!-- Hero Section -->
     <section class="hero-section">
       <div class="top-info">
         <div class="top-info-block">
-          <div class="value">24.03.24</div>
+          <div class="value">25.12.2026</div>
           <div class="label">date</div>
         </div>
         <div class="top-info-block">
-          <div class="value">Prague</div>
+          <div class="value">Dubai</div>
           <div class="label">place</div>
         </div>
       </div>
 
-      <h1 class="couple-names script-font">Maria & Adrien</h1>
+      <h1 class="couple-names script-font">Emily & Saliba</h1>
       <h2 class="invitation-title">We are inviting you<br>to our wedding!</h2>
       <p class="invitation-subtitle">Let's celebrate the best day<br>of our life together!</p>
 
       <div class="hero-image-wrapper">
-        <img src="images/hero.jpg" alt="Maria and Adrien">
+        <img src="images/hero.jpg" alt="Emily and Saliba">
       </div>
     </section>
 
-    <!-- Intro Message Section -->
     <section class="intro-section">
       <h2 class="script-font">Dear friends and family!</h2>
       <p class="intro-text">
-        This spring a very special and happy event is going to happen - our wedding
+        This winter a very special and happy event is going to happen - our wedding
       </p>
       <p class="intro-text">
         It is impossible to imagine this day without our closest people. Thus, we are happy to invite you to join and share this wonderful occasion with us
@@ -509,56 +554,112 @@
       <img src="images/dove.png" alt="White Dove" class="dove-img">
     </section>
 
-    <!-- Event Timeline Section -->
-    <h2 class="timeline-title script-font">Event timeline</h2>
-    <div class="card-box">
-      <div class="card-badge">24 March</div>
-      <div class="timeline-list">
-        
-        <div class="timeline-item">
-          <div class="time-event">12:00 - Wedding ceremony</div>
-          <div class="location">Vrtba Garden, Karmelitska 25, 118 00 Praha 1 – Lesser Town</div>
-        </div>
+    <h2 class="timeline-title script-font">Order of the Day</h2>
+    
+    <div class="vertical-timeline">
 
-        <div class="timeline-item">
-          <div class="time-event">13:30 - Transfer</div>
+      <div class="timeline-row">
+        <div class="timeline-col left">
+          <span class="timeline-time">12:00 PM</span>
+          <span class="timeline-event-title">Ceremony</span>
         </div>
-
-        <div class="timeline-item">
-          <div class="time-event">14:00 - Cocktail hour</div>
-          <div class="location">Petřínské sady 411/14, 118 00 Praha 1</div>
+        <div class="timeline-col right">
+          <svg class="timeline-icon" viewBox="0 0 24 24">
+            <path d="M9 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+            <path d="M15 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+            <path d="M6 9l3-3 3 3" />
+          </svg>
         </div>
-
-        <div class="timeline-item">
-          <div class="time-event">15:00 - First dance</div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="time-event">15:30 - Dinner</div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="time-event">17:00 - Party</div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="time-event">21:00 - Closing</div>
-        </div>
-
       </div>
+
+      <div class="timeline-row">
+        <div class="timeline-col left" style="text-align: right; display: flex; justify-content: flex-end;">
+          <svg class="timeline-icon" viewBox="0 0 24 24">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+        </div>
+        <div class="timeline-col right">
+          <span class="timeline-time">1:30 PM</span>
+          <span class="timeline-event-title">Photos</span>
+        </div>
+      </div>
+
+      <div class="timeline-row">
+        <div class="timeline-col left">
+          <span class="timeline-time">2:00 PM</span>
+          <span class="timeline-event-title">Cocktail Hour</span>
+        </div>
+        <div class="timeline-col right">
+          <svg class="timeline-icon" viewBox="0 0 24 24">
+            <path d="M8 22h8m-4-7v7M4 3l8 9 8-9H4z"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="timeline-row">
+        <div class="timeline-col left" style="text-align: right; display: flex; justify-content: flex-end;">
+          <svg class="timeline-icon" viewBox="0 0 24 24">
+            <path d="M9 18V5l12-2v13M9 9l12-2"/>
+            <circle cx="6" cy="18" r="3"/>
+            <circle cx="18" cy="16" r="3"/>
+          </svg>
+        </div>
+        <div class="timeline-col right">
+          <span class="timeline-time">3:00 PM</span>
+          <span class="timeline-event-title">First Dance</span>
+        </div>
+      </div>
+
+      <div class="timeline-row">
+        <div class="timeline-col left">
+          <span class="timeline-time">3:30 PM</span>
+          <span class="timeline-event-title">Dinner & Toasts</span>
+        </div>
+        <div class="timeline-col right">
+          <svg class="timeline-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="7"/>
+            <path d="M3 4v6a3 3 0 0 0 3 3v7M21 4v16M18 4v4a2 2 0 0 0 2 2"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="timeline-row">
+        <div class="timeline-col left" style="text-align: right; display: flex; justify-content: flex-end;">
+          <svg class="timeline-icon" viewBox="0 0 24 24">
+            <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6-6.3 4.6 2.3-7.4-6-4.6h7.6z"/>
+          </svg>
+        </div>
+        <div class="timeline-col right">
+          <span class="timeline-time">5:00 PM</span>
+          <span class="timeline-event-title">Party</span>
+        </div>
+      </div>
+
+      <div class="timeline-row">
+        <div class="timeline-col left">
+          <span class="timeline-time">9:00 PM</span>
+          <span class="timeline-event-title">Closing</span>
+        </div>
+        <div class="timeline-col right">
+          <svg class="timeline-icon" viewBox="0 0 24 24">
+            <rect x="3" y="6" width="18" height="12" rx="2"/>
+            <circle cx="7" cy="18" r="2"/>
+            <circle cx="17" cy="18" r="2"/>
+          </svg>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Middle Image Banner -->
     <div class="rounded-image">
       <img src="images/couple-umbrella.jpg" alt="Couple under umbrella">
     </div>
 
-    <!-- Dress Code Section -->
     <section class="dresscode-section">
       <h2 class="script-font">Dress code</h2>
       <p class="dresscode-desc">We would be very happy if your outfit is in the colours of the wedding theme.</p>
 
-      <!-- Color Palette Swatches -->
       <div class="color-palette">
         <div class="color-swatch" style="background-color: #f3ece4;"></div>
         <div class="color-swatch" style="background-color: #d8d8d8;"></div>
@@ -567,10 +668,8 @@
         <div class="color-swatch" style="background-color: #2b2b2a;"></div>
       </div>
 
-      <!-- Outfits Section with Correct Layout & Curved Arrows -->
       <div class="outfits-container">
         
-        <!-- Men Text & Arrow -->
         <div class="men-text-block">
           <strong>Men:</strong>
           Suits, jackets, shirts, grey, champagne, black colours.
@@ -580,22 +679,18 @@
           </svg>
         </div>
 
-        <!-- Polaroid 1: Men -->
         <div class="polaroid-card card-men">
           <img src="images/men-outfit.jpg" alt="Men Outfit">
         </div>
 
-        <!-- Polaroid 2: Group (Center) -->
         <div class="polaroid-card card-group">
           <img src="images/women-outfit-1.jpg" alt="Bridesmaids Outfit">
         </div>
 
-        <!-- Polaroid 3: Women -->
         <div class="polaroid-card card-women">
           <img src="images/women-outfit-2.jpg" alt="Women Outfit">
         </div>
 
-        <!-- Women Text & Arrow -->
         <div class="women-text-block">
           <strong>Women:</strong>
           Cocktail dresses or suits, champagne, grey colours.
@@ -612,7 +707,6 @@
       </p>
     </section>
 
-    <!-- RSVP Section -->
     <div class="card-box">
       <h2 class="script-font" style="text-align: center; font-size: 2.2rem; margin-bottom: 20px;">Please confirm your attendance</h2>
       
@@ -648,28 +742,25 @@
       </form>
     </div>
 
-    <!-- Organizational Aspects Section -->
     <section class="org-section">
       <h2 class="script-font">Organizational aspects</h2>
       <p class="intro-text">
-        If you have any questions, you can always contact the organizer of our wedding - Maria
+        If you have any questions, you can always contact the organizer of our wedding - Emily
       </p>
-      <div class="phone-number script-font">+31 6845965887</div>
+      <div class="phone-number script-font">+971 50 123 4567</div>
       <p class="intro-text">
         Also, we would be very happy to see creative approaches to congratulations. For example, if you remember a funny story related to us to share with guests and laugh all together.
       </p>
     </section>
 
-    <!-- Couple Running Image -->
     <div class="rounded-image">
       <img src="images/couple-running.jpg" alt="Couple running">
     </div>
 
-    <!-- Location Section -->
     <section style="text-align: center; padding-top: 20px;">
       <h2 class="script-font" style="font-size: 2.3rem;">The location</h2>
+      <p style="font-size: 1.1rem; color: #555; margin-bottom: 15px;">Creek Ballroom, Park Hyatt Dubai</p>
       
-      <!-- Embedded Google Map -->
       <div class="map-container">
         <iframe 
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2560.213233800262!2d14.4013401!3d50.0869687!2m2!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b94e3347f8a79%3A0xb214f48866e41b99!2sVrtba%20Garden!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" 
@@ -679,10 +770,9 @@
       </div>
     </section>
 
-    <!-- Footer Section -->
     <footer class="footer-section">
       <div class="script-font">Hope to see you there</div>
-      <div class="names">Maria and Adrien</div>
+      <div class="names">Emily and Saliba</div>
       <div class="heart-icon">♡</div>
     </footer>
 
