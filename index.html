@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Emily & Saliba - Wedding Invitation</title>
   
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -43,8 +44,8 @@
     }
 
     /* Hardware Acceleration to prevent flickering */
-    video, .envelope-wrapper, #envelope-overlay {
-      will-change: opacity, transform;
+    video, .envelope-wrapper, #envelope-overlay, .envelope-image {
+      will-change: transform, opacity;
       transform: translateZ(0);
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
@@ -76,19 +77,29 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      background-color: #fcfbf9; /* نفس لون خلفية المغلف لمنع أي بياض */
     }
 
-    .envelope-image, .envelope-video {
+    /* Stack elements: Video below Image */
+    .envelope-video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       position: absolute;
       top: 0;
       left: 0;
+      z-index: 1;
     }
 
-    .envelope-video {
-      display: none;
+    .envelope-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      transition: opacity 0.2s ease-out; /* انتقال ناعم جداً عند إخفاء الصورة */
     }
 
     /* Clickable Wax Seal Indicator */
@@ -637,19 +648,22 @@
 </head>
 <body class="no-scroll">
 
+  <!-- Interactive Envelope Overlay -->
   <div id="envelope-overlay">
     <div class="envelope-wrapper">
-      <img src="images/envelope-cover.jpg" alt="Wax Seal Envelope" class="envelope-image" id="envelope-img">
       <video id="envelope-video" class="envelope-video" playsinline muted preload="auto">
         <source src="videos/envelope-opening.mp4" type="video/mp4">
       </video>
+      <img src="images/envelope-cover.jpg" alt="Wax Seal Envelope" class="envelope-image" id="envelope-img">
       <div class="wax-seal-click-area" id="seal-btn"></div>
       <div class="click-hint" id="click-text">Tap to open invitation</div>
     </div>
   </div>
 
+  <!-- Main Mobile Container -->
   <div class="mobile-container">
 
+    <!-- Hero Section -->
     <section class="hero-section">
       <div class="top-info">
         <div class="top-info-block">
@@ -671,6 +685,7 @@
       </div>
     </section>
 
+    <!-- Intro Message Section -->
     <section class="intro-section">
       <h2 class="script-font">Dear friends and family!</h2>
       <p class="intro-text">
@@ -682,10 +697,12 @@
       <img src="images/dove.png" alt="White Dove" class="dove-img">
     </section>
 
+    <!-- Event Timeline Section -->
     <h2 class="timeline-title script-font">Order of the Day</h2>
     
     <div class="vertical-timeline">
 
+      <!-- 1. Ceremony -->
       <div class="timeline-row">
         <div class="timeline-col left">
           <span class="timeline-time">12:00 PM</span>
@@ -702,6 +719,7 @@
         </div>
       </div>
 
+      <!-- 2. Photos -->
       <div class="timeline-row">
         <div class="timeline-col left" style="display: flex; justify-content: flex-end;">
           <div class="timeline-icon-box">
@@ -717,6 +735,7 @@
         </div>
       </div>
 
+      <!-- 3. Cocktail Hour -->
       <div class="timeline-row">
         <div class="timeline-col left">
           <span class="timeline-time">2:00 PM</span>
@@ -732,6 +751,7 @@
         </div>
       </div>
 
+      <!-- 4. First Dance -->
       <div class="timeline-row">
         <div class="timeline-col left" style="display: flex; justify-content: flex-end;">
           <div class="timeline-icon-box">
@@ -748,6 +768,7 @@
         </div>
       </div>
 
+      <!-- 5. Dinner & Toasts -->
       <div class="timeline-row">
         <div class="timeline-col left">
           <span class="timeline-time">3:30 PM</span>
@@ -762,6 +783,7 @@
         </div>
       </div>
 
+      <!-- 6. Party -->
       <div class="timeline-row">
         <div class="timeline-col left" style="display: flex; justify-content: flex-end;">
           <div class="timeline-icon-box">
@@ -776,6 +798,7 @@
         </div>
       </div>
 
+      <!-- 7. Closing -->
       <div class="timeline-row">
         <div class="timeline-col left">
           <span class="timeline-time">9:00 PM</span>
@@ -795,14 +818,17 @@
 
     </div>
 
+    <!-- Middle Image Banner -->
     <div class="rounded-image">
       <img src="images/couple-umbrella.jpg" alt="Couple under umbrella">
     </div>
 
+    <!-- Dress Code Section -->
     <section class="dresscode-section">
       <h2 class="script-font">Dress code</h2>
       <p class="dresscode-desc">We would be very happy if your outfit is in the colours of the wedding theme.</p>
 
+      <!-- Color Palette Swatches -->
       <div class="color-palette">
         <div class="color-swatch" style="background-color: #f3ece4;"></div>
         <div class="color-swatch" style="background-color: #d8d8d8;"></div>
@@ -811,6 +837,7 @@
         <div class="color-swatch" style="background-color: #2b2b2a;"></div>
       </div>
 
+      <!-- Outfits Section -->
       <div class="outfits-container">
         
         <div class="men-text-block">
@@ -850,6 +877,7 @@
       </p>
     </section>
 
+    <!-- RSVP Section -->
     <div class="card-box">
       <h2 class="script-font" style="text-align: center; font-size: 2.2rem; margin-bottom: 20px;">Please confirm your attendance</h2>
       
@@ -872,6 +900,7 @@
       </form>
     </div>
 
+    <!-- Organizational Aspects Section -->
     <section class="org-section">
       <h2 class="script-font">Organizational aspects</h2>
       <p class="intro-text">
@@ -883,10 +912,12 @@
       </p>
     </section>
 
+    <!-- Couple Running Image -->
     <div class="rounded-image">
       <img src="images/couple-running.jpg" alt="Couple running">
     </div>
 
+    <!-- Location Section -->
     <section style="text-align: center; padding-top: 20px;">
       <h2 class="script-font" style="font-size: 2.3rem;">The location</h2>
       <p style="font-size: 1.1rem; color: #555; margin-bottom: 15px;">Creek Ballroom, Park Hyatt Dubai</p>
@@ -900,6 +931,7 @@
       </div>
     </section>
 
+    <!-- Footer Section -->
     <footer class="footer-section">
       <div class="script-font">Hope to see you there</div>
       <div class="names">Emily and Saliba</div>
@@ -908,6 +940,7 @@
 
   </div>
 
+  <!-- Interactive Scripts -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const overlay = document.getElementById('envelope-overlay');
@@ -915,7 +948,9 @@
       const video = document.getElementById('envelope-video');
       const sealBtn = document.getElementById('seal-btn');
       const clickText = document.getElementById('click-text');
+      
       let isOpened = false;
+      let videoStarted = false;
 
       const finishOpening = () => {
         if (isOpened) return;
@@ -932,19 +967,33 @@
         }, 800);
       };
 
-      const openEnvelope = (e) => {
-        e.stopPropagation();
-        if (video.style.display === 'block') return;
+      // Hide image seamlessly ONLY when video actually starts rendering frames
+      video.addEventListener('timeupdate', () => {
+        if (!videoStarted && video.currentTime > 0) {
+          videoStarted = true;
+          img.style.opacity = '0'; // Fade out image smoothly revealing video below
+          setTimeout(() => {
+            img.style.display = 'none';
+          }, 200);
+        }
+      });
 
-        img.style.display = 'none';
+      const openEnvelope = (e) => {
+        if (e) e.stopPropagation();
+        if (videoStarted) return;
+
+        // Hide interactive cues instantly
         sealBtn.style.display = 'none';
         clickText.style.display = 'none';
-        video.style.display = 'block';
 
-        video.play().catch(error => {
-          console.log("Autoplay fallback:", error);
-          finishOpening();
-        });
+        // Play video underneath image
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            console.log("Autoplay fallback:", error);
+            finishOpening();
+          });
+        }
       };
 
       // Events for opening
