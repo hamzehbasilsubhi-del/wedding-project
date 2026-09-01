@@ -7,7 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* Reset & Base Styles */
@@ -152,7 +152,7 @@
       pointer-events: none;
     }
 
-    /* Section 3: Vertical Timeline (New Style Matching Reference) */
+    /* Section 3: Vertical Timeline with High-Precision Vector Icons & Scroll Fade */
     .timeline-title {
       text-align: center;
       font-size: 2.3rem;
@@ -174,16 +174,25 @@
       bottom: 0;
       left: 50%;
       width: 1px;
-      background-color: #8c8c8c;
+      background-color: #a8a8a8;
       transform: translateX(-50%);
     }
 
+    /* Animation and Layout for Timeline Row */
     .timeline-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 35px;
+      margin-bottom: 38px;
       position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1), transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .timeline-row.fade-in-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .timeline-row:last-child {
@@ -206,26 +215,26 @@
       padding-left: 15px;
     }
 
-    /* Horizontal Tick Line on the Center Line */
+    /* Horizontal Tick Line on Center Line */
     .timeline-row::after {
       content: '';
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 12px;
+      width: 10px;
       height: 1px;
-      background-color: #8c8c8c;
+      background-color: #a8a8a8;
       transform: translate(-50%, -50%);
     }
 
     .timeline-time {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 500;
+      font-size: 0.8rem;
+      font-weight: 600;
       letter-spacing: 1.5px;
       color: #222222;
       display: block;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
 
     .timeline-event-title {
@@ -236,13 +245,23 @@
       color: #333333;
     }
 
-    .timeline-icon {
-      width: 38px;
-      height: 38px;
-      stroke: #333333;
-      stroke-width: 1.2;
+    /* Crisp Professional Vector Icons */
+    .timeline-icon-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+    }
+
+    .timeline-icon-box svg {
+      width: 32px;
+      height: 32px;
+      stroke: #2c2c2c;
+      stroke-width: 1.3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
       fill: none;
-      display: inline-block;
     }
 
     /* Image Divider Sections */
@@ -564,20 +583,24 @@
           <span class="timeline-event-title">Ceremony</span>
         </div>
         <div class="timeline-col right">
-          <svg class="timeline-icon" viewBox="0 0 24 24">
-            <path d="M9 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
-            <path d="M15 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
-            <path d="M6 9l3-3 3 3" />
-          </svg>
+          <div class="timeline-icon-box">
+            <svg viewBox="0 0 24 24">
+              <circle cx="9" cy="12" r="5" />
+              <circle cx="15" cy="12" r="5" />
+              <path d="M12 7l1-2 2 1" />
+            </svg>
+          </div>
         </div>
       </div>
 
       <div class="timeline-row">
-        <div class="timeline-col left" style="text-align: right; display: flex; justify-content: flex-end;">
-          <svg class="timeline-icon" viewBox="0 0 24 24">
-            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-            <circle cx="12" cy="13" r="4"/>
-          </svg>
+        <div class="timeline-col left" style="display: flex; justify-content: flex-end;">
+          <div class="timeline-icon-box">
+            <svg viewBox="0 0 24 24">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+          </div>
         </div>
         <div class="timeline-col right">
           <span class="timeline-time">1:30 PM</span>
@@ -591,19 +614,24 @@
           <span class="timeline-event-title">Cocktail Hour</span>
         </div>
         <div class="timeline-col right">
-          <svg class="timeline-icon" viewBox="0 0 24 24">
-            <path d="M8 22h8m-4-7v7M4 3l8 9 8-9H4z"/>
-          </svg>
+          <div class="timeline-icon-box">
+            <svg viewBox="0 0 24 24">
+              <path d="M8 22h8m-4-7v7M4 3l8 9 8-9H4z"/>
+              <line x1="6" y1="6" x2="18" y2="6" stroke-dasharray="2 2" />
+            </svg>
+          </div>
         </div>
       </div>
 
       <div class="timeline-row">
-        <div class="timeline-col left" style="text-align: right; display: flex; justify-content: flex-end;">
-          <svg class="timeline-icon" viewBox="0 0 24 24">
-            <path d="M9 18V5l12-2v13M9 9l12-2"/>
-            <circle cx="6" cy="18" r="3"/>
-            <circle cx="18" cy="16" r="3"/>
-          </svg>
+        <div class="timeline-col left" style="display: flex; justify-content: flex-end;">
+          <div class="timeline-icon-box">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 18V5l12-2v13M9 9l12-2"/>
+              <circle cx="6" cy="18" r="3"/>
+              <circle cx="18" cy="16" r="3"/>
+            </svg>
+          </div>
         </div>
         <div class="timeline-col right">
           <span class="timeline-time">3:00 PM</span>
@@ -617,18 +645,21 @@
           <span class="timeline-event-title">Dinner & Toasts</span>
         </div>
         <div class="timeline-col right">
-          <svg class="timeline-icon" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="7"/>
-            <path d="M3 4v6a3 3 0 0 0 3 3v7M21 4v16M18 4v4a2 2 0 0 0 2 2"/>
-          </svg>
+          <div class="timeline-icon-box">
+            <svg viewBox="0 0 24 24">
+              <path d="M18 3v18M18 3c1.5 0 3 1.5 3 4v5c0 1.5-1.5 3-3 3M6 3v8a3 3 0 0 0 3 3v7M3 3v4a3 3 0 0 0 3 3"/>
+            </svg>
+          </div>
         </div>
       </div>
 
       <div class="timeline-row">
-        <div class="timeline-col left" style="text-align: right; display: flex; justify-content: flex-end;">
-          <svg class="timeline-icon" viewBox="0 0 24 24">
-            <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4-6.3-4.6-6.3 4.6 2.3-7.4-6-4.6h7.6z"/>
-          </svg>
+        <div class="timeline-col left" style="display: flex; justify-content: flex-end;">
+          <div class="timeline-icon-box">
+            <svg viewBox="0 0 24 24">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
         </div>
         <div class="timeline-col right">
           <span class="timeline-time">5:00 PM</span>
@@ -642,11 +673,14 @@
           <span class="timeline-event-title">Closing</span>
         </div>
         <div class="timeline-col right">
-          <svg class="timeline-icon" viewBox="0 0 24 24">
-            <rect x="3" y="6" width="18" height="12" rx="2"/>
-            <circle cx="7" cy="18" r="2"/>
-            <circle cx="17" cy="18" r="2"/>
-          </svg>
+          <div class="timeline-icon-box">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="5" width="18" height="12" rx="2"/>
+              <path d="M3 11h18M7 17v2M17 17v2"/>
+              <circle cx="7" cy="14" r="1" fill="#2c2c2c"/>
+              <circle cx="17" cy="14" r="1" fill="#2c2c2c"/>
+            </svg>
+          </div>
         </div>
       </div>
 
@@ -777,6 +811,32 @@
     </footer>
 
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const rows = document.querySelectorAll('.timeline-row');
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.15
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-visible');
+          }
+        });
+      }, observerOptions);
+
+      rows.forEach((row, index) => {
+        // Stagger animation timing per row for smooth drop effect
+        row.style.transitionDelay = `${index * 0.12}s`;
+        observer.observe(row);
+      });
+    });
+  </script>
 
 </body>
 </html>
